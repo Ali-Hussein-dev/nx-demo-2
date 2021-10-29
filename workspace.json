@@ -12,12 +12,6 @@
             "port": 3001,
             "buildTarget": "internal-admin:build",
             "dev": true
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "internal-admin:build:production",
-              "dev": false
-            }
           }
         },
         "build": {
@@ -27,6 +21,12 @@
             "outputPath": "dist/apps/internal-admin",
             "buildTarget": "internal-admin:build",
             "dev": false
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "internal-admin:build:production",
+              "dev": false
+            }
           }
         },
         "test": {
