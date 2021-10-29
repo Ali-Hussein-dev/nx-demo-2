@@ -49,6 +49,91 @@
         }
       }
     },
-    "internal-admin-e2e": "apps/internal-admin-e2e"
+    "internal-admin-e2e": "apps/internal-admin-e2e",
+    "kartebuch": {
+      "root": "apps/kartebuch",
+      "sourceRoot": "apps/kartebuch",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "defaultConfiguration": "production",
+          "options": {
+            "root": "apps/kartebuch",
+            "outputPath": "dist/apps/kartebuch"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "kartbuch:build:production",
+              "dev": false
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "kartebuch:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "kartebuch:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "kartebuch:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/kartebuch"],
+          "options": {
+            "jestConfig": "apps/kartebuch/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/kartebuch/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      },
+      "tags": []
+    },
+    "kartebuch-e2e": {
+      "root": "apps/kartebuch-e2e",
+      "sourceRoot": "apps/kartebuch-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/kartebuch-e2e/cypress.json",
+            "devServerTarget": "kartebuch:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "kartebuch:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/kartebuch-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["kartebuch"]
+    }
   }
 }
