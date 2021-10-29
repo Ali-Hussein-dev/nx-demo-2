@@ -1,7 +1,54 @@
 {
   "version": 2,
   "projects": {
-    "internal-admin": "apps/internal-admin",
+    "internal-admin": {
+      "root": "apps/internal-admin",
+      "sourceRoot": "apps/internal-admin",
+      "projectType": "application",
+      "targets": {
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "port": 3001,
+            "buildTarget": "internal-admin:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "internal-admin:build:production",
+              "dev": false
+            }
+          }
+        },
+        "build": {
+          "executor": "@nrwl/next:build",
+          "options": {
+            "root": "apps/internal-admin",
+            "outputPath": "dist/apps/internal-admin",
+            "buildTarget": "internal-admin:build",
+            "dev": false
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/internal-admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/internal-admin/tsconfig.json",
+              "apps/internal-admin/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/internal-admin/**/*"]
+          }
+        }
+      }
+    },
     "internal-admin-e2e": "apps/internal-admin-e2e"
   }
 }
