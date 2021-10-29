@@ -12,12 +12,14 @@
     "@nrwl/next": "13.1.2",
     "core-js": "^3.6.5",
     "next": "12.0.0",
+    "next-pwa": "^5.4.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^12.0.1",
     "@nrwl/cli": "13.1.2",
     "@nrwl/cypress": "13.1.2",
     "@nrwl/eslint-plugin-nx": "13.1.2",
@@ -50,6 +52,7 @@
     "husky": "^7.0.4",
     "jest": "27.2.3",
     "lint-staged": "^11.2.6",
+    "next-compose-plugins": "^2.2.1",
     "postcss": "^8.3.11",
     "prettier": "^2.3.1",
     "tailwind-heropatterns": "^0.0.8",
