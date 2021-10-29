@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "internal-admin": "apps/internal-admin",
+    "internal-admin-e2e": "apps/internal-admin-e2e"
+  }
+}
